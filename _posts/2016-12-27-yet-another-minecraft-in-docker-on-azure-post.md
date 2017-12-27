@@ -30,4 +30,4 @@ This grabs the image from the Docker site, then runs it with the name "mc". Want
 Docker ps -a
 ```
 Which results in something like this: 
-![powershell output](https://raw.githubusercontent.com/tdallmann/tdallmann.github.io/master/images/ps.png)
+![powershell output](https://raw.githubusercontent.com/tdallmann/tdallmann.github.io/master/images/ps.PNG)
