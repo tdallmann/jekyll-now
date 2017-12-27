@@ -31,3 +31,23 @@ Docker ps -a
 ```
 Which results in something like this: 
 ![powershell output](https://raw.githubusercontent.com/tdallmann/tdallmann.github.io/master/images/ps.PNG)
+
+At this point you can also validate that there really is a Minecraft server running on your local machine by starting Minecraft, click Multiplayer, then Direct Connect, and enter "localhost:25565" as the server address. Click Join Server, and you should be rewarded by entering your new world.
+
+Not working? The easiest way to see what's happening is to attach to the container:
+```
+docker attach mc
+```
+Try connecting again and you will see any error messages that are going to standard output.
+
+## Your Azure VM
+Now that we've proven the Minecraft server can run locally in a Docker container, we can perform the same basic steps on an Azure VM. So let's set one up:
+
+  * Log in to the Azure Portal
+  * (optional) Create a new Resource Group
+    * Resource groups are a helpful way to organize Azure objects
+  * Add a new VM to the resource group. Search for "Docker on Ubuntu Server", which is a VM image already set up for Docker.
+    * Give it a name
+    * Provide a user name and Password
+    * Select a pricing tier
+    * Under "Optional Configuration" --> "Endpoints", add an endpoint for Minecraft on port 25565
