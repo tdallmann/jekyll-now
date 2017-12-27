@@ -6,3 +6,6 @@ First and foremost - you need Windows 10 (the Anniversary edition) or Windows 20
 Next you need to get a copy of Docker. Luckily this is freely available at https://www.docker.com/.
 
 Install Docker for Windows. Once installed, you can execute Docker commands from a variety of shell tools. I prefer PowerShell, but even cmd.exe will work. You can verify that you have Docker installed properly by entering this in your shell:
+```
+docker version
+```
