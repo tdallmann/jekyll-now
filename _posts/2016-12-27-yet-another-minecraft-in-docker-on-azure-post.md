@@ -9,7 +9,7 @@ To accomplish this goal, I am going to learn how to take a Minecraft server dist
 ## Getting Started
 
 First things first: we're going to need some tools:
-  *Docker for Windows (see my previous post for more info).
-  *An Azure subscription (if you have MSDN you're covered, otherwise [check this out](https://azure.microsoft.com/en-us/free/))
-  *[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to make an SSH connection to your Linux server
-  *[WinSCP](https://winscp.net/eng/download.php) to transfer files to/from your Linux server
+  * Docker for Windows (see my previous post for more info).
+  * An Azure subscription (if you have MSDN you're covered, otherwise [check this out](https://azure.microsoft.com/en-us/free/))
+  * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to make an SSH connection to your Linux server
+  * [WinSCP](https://winscp.net/eng/download.php) to transfer files to/from your Linux server
