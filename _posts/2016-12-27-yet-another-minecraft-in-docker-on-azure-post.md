@@ -162,3 +162,10 @@ minecraft-server:
 See the [Docker-Compose Overview](https://docs.docker.com/compose/overview/) for more information about this utility.
 
 You can see many of the same options we used earlier in the command line, now present in this file. When you use a docker-compose file, it will build/rebuild a container and its services. When you run it for the first time, use:
+```
+docker-compose up -d
+```
+This will build and start the services contained in the file (minecraft-server in this instance).
+
+## Wrapping Up
+I had some fun putting this together - I hope you did too! It was nice to take a break from "real" issues and focus on something a little lighter.
