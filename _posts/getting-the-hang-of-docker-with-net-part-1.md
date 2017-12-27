@@ -80,6 +80,7 @@ b9454c3094c6: Skipped foreign layer
 latest: digest: sha256:074c88a06222ac75880749b4c65db59f103f01eb94dbdee35b5cb182e51a7b95     size: 1152
 ```
 Now look out on Docker Cloud, in the Repositories tab, and you should see your new image:
-![Docker Cloud Image](tdallmann.github.io/images/DockerRepo.PNG "Docker Cloud Image")
+
+![Docker Cloud Image](https://raw.githubusercontent.com/tdallmann/tdallmann.github.io/master/images/DockerRepo.PNG "Docker Cloud Image")
 ## Conclusion
 In this post we took some small steps to utilize Docker. As we move through the series we will continue to expand on this towards the goal of using Docker to run a .Net application and deploy to a cloud server like Azure.
