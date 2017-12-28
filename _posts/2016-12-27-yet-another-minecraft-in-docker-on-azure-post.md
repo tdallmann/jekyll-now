@@ -30,7 +30,7 @@ This grabs the image from the Docker site, then runs it with the name "mc". Want
 Docker ps -a
 ```
 Which results in something like this: 
-![powershell output](https://raw.githubusercontent.com/tdallmann/tdallmann.github.io/master/images/ps.PNG)
+![powershell output](/images/ps.PNG)
 
 At this point you can also validate that there really is a Minecraft server running on your local machine by starting Minecraft, click Multiplayer, then Direct Connect, and enter "localhost:25565" as the server address. Click Join Server, and you should be rewarded by entering your new world.
 
