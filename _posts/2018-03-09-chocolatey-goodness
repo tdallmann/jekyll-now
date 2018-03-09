@@ -2,3 +2,95 @@
 layout: post
 title: Chocolatey Goodness!
 ---
+Everyone in IT inevitably loads a plethora of applications onto their VM.  For some it's developer tools, for others it's apps that let you be more productive or enable you to perform specific job functions.  In the end we all experience the same set of questions/problems:
+
+  1 Where do I find the installer for an application?
+  1 What do I have on my machine?
+  1 Which ones are out of date?
+  1 How can I effectively remove the ones I don't need (because we all know about the junk left behind by "Programs and Features" in Windows)?
+One solution that I have been working with is called Chocolatey.  It's a package manager.  If you're a linux user, then you know about Yum.  If you're a .Net developer, then you know about Nugat.  OSX users have Brew.  There are many more out there.  All of these help you do one thing: automate the process of installing, upgrading, configuring, and removing programs on your computer.
+
+"That's great!" you say.  "How do I get started?"
+
+Easy: open up PowerShell (as administrator) and enter the following command:
+
+             iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
+*** Note: if you are running PowerShell v2.x, you'll need a slightly different command:
+
+     Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+You now have Chocolatey installed on your system and you're ready to taste it's goodness!
+
+## Now what?
+Go check out this site: https://chocolatey.org/packages 
+
+These are all the packages that are currently available through chocolatey.  Most common items are out there: Notepad++, Google Chrome, TortoiseSVN, Visual Studio Code, and more.  
+
+Let's try it out and see what happens.  I want to install the Slack client on my VM, so I open up PowerShell (as admin) and enter "choco install slack":
+
+Installing Slack with Chocolatey
+Installing Slack with Chocolatey
+Chocolatey looked up the package, downloaded it, and installed it on my VM.  I can verify it's there through Windows:
+
+Image
+
+## So What???
+OK - that is not really very impressive on it's own.  I could have gone to the Slack website and downloaded the installer and run it.  But I have LOTS of applications installed.  What if I want to know which ones have newer versions?  That's easy if I've been managing them with Chocolatey:
+
+     choco outdated
+
+This command lists any applications that have newer versions available.  Check out what happened when I ran this on my machine today:
+
+Result of running choco outdated
+Result of running choco outdated
+Whoa... I have some updates to get.  
+
+In the old days (before Chocolatey) I would need to find each newer version, download it, and install it with an upgrade option.  Looking at the list above I could easily spend an hour or more getting current.  
+
+But I'm not going to do that!  I'm going to run one command:
+
+    choco upgrade all -y
+
+This magical little command will iterate through the entire list, downloading and installing each.  It should be noted that Chocolatey uses custom PowerShell scripts to perform the install/upgrade/uninstall operations, so these operations are intelligent, performing the right steps based on what you currently have installed.
+
+Here's a sample of the output:
+
+choco upgrade output
+choco upgrade output
+I've just dramatically reduced the time it takes to keep my machine up to date, and I did it all in one operation.  (that little "-y" in the command means "don't ask me about each one")
+
+Want to update just a select few applications?  That's easy too:
+
+    choco upgrade appname
+
+(where "appname" is the application you are updating)
+
+## What about removing apps I don't need anymore?
+It couldn't be easier - just use the uninstall command:
+
+    choco uninstall notepadplusplus
+
+That's about it!  You can now manage a good chunk of the apps on your VM with less effort, and you're more likely to stay up to date.
+
+A couple of caveats: 
+
+When you're managing an application with chocolatey, you don't want to manage it the "normal" way anymore. For example, while you can still run an upgrade through the app, if you do chocolatey won't know about it, so it won't know what version you're really on.
+OK I lied - only one caveat.  :)
+
+## This is all great.  Where else do we use Chocolatey?
+Chocolatey is the Windows package manager used by Puppet.  This means that when puppet is managing an application on a server, it is invoking Chocolatey to perform the installation/upgrade/uninstallation.  
+
+Chocolatey uses Nuget behind the scenes, so we create custom Nuget packages for server applications.  This provides the advantage of being able to control the source files being installed (we don't just grab installers from the internet each time - we put them in a special location on the Chocolatey server).
+
+## How can I contribute to Chocolatey?
+The packages on the Chocolatey web site are created by people like you and me.  You can create your own packages and upload them to the Chocolatey site.  Packages are reviewed by both Chocolatey and your peers, and given ratings that let you know it's safe to use:
+
+A trusted package rating
+A trusted package rating
+Check this out if you want to know how a package gets marked as trusted: https://chocolatey.org/faq#what-is-a-trusted-package
+
+## In conclusion...
+Try it - you'll like it.  
+
+I use choco install first, and only revert to downloads when a package isn't available.  Give it a try and let me know how it goes.
